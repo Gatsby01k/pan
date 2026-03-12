@@ -31,5 +31,5 @@ export function generateMetadata({ params }: Props): Metadata {
 export default function InsightArticleRoute({ params }: Props) {
   const article = insightArticleMap[params.slug];
   if (!article) notFound();
-  return <InsightArticlePage article={article} />;
+  return <InsightArticlePage slug={params.slug} />;
 }
