@@ -68,18 +68,13 @@ export default function SeoLandingPage({
 
       <main className="mx-auto max-w-7xl space-y-16 px-4 pb-24 pt-24 sm:px-6 sm:pt-28 lg:px-8">
         <div className="space-y-5">
-          <Breadcrumbs
-            items={[
-              { href: "/", label: "Home" },
-              { href: `/${slug}`, label: title },
-            ]}
-          />
+          <Breadcrumbs items={[{ href: "/", label: "Home" }, { href: `/${slug}`, label: title }]} />
           <SectionHeader eyebrow={eyebrow} title={title} text={text} aside={aside} />
         </div>
 
         <section className="grid gap-6 lg:grid-cols-[1.08fr_.92fr]">
           <div className="panel p-5 sm:p-7">
-            <div className="eyebrow">why this page exists</div>
+            <div className="eyebrow">overview</div>
             <div className="mt-4 space-y-4 text-sm leading-7 text-white/66 sm:text-base">
               {intro.map((paragraph) => (
                 <p key={paragraph}>{paragraph}</p>
@@ -90,22 +85,15 @@ export default function SeoLandingPage({
           <div className="panel p-5 sm:p-7">
             <div className="eyebrow">best next step</div>
             <h2 className="mt-3 text-2xl font-semibold leading-tight text-white sm:text-3xl">
-              Move from search intent into a qualified partnership brief.
+              Turn search intent into a qualified partnership brief.
             </h2>
             <p className="mt-4 text-sm leading-7 text-white/64">
-              Strong pages should not stop at education. They should route affiliates, advertisers, operators, and managers into a clear application path with Telegram as the fastest closing channel.
+              If this page matches what you are looking for, the next step is simple: request access and move the conversation into Telegram.
             </p>
-
             <div className="mt-6 flex flex-col gap-3">
-              <Link href="/join" className="button-primary">
-                Apply for Access
-              </Link>
-              <Link href="/access" className="button-secondary">
-                Open Access Desk
-              </Link>
-              <Link href="/for-affiliates" className="button-secondary">
-                For Affiliates
-              </Link>
+              <Link href="/join" className="button-primary">Request Access</Link>
+              <Link href="/for-affiliates" className="button-secondary">For Affiliates</Link>
+              <Link href="/for-advertisers" className="button-secondary">For Advertisers</Link>
             </div>
           </div>
         </section>
@@ -123,39 +111,23 @@ export default function SeoLandingPage({
           <div className="panel p-5 sm:p-7">
             <div className="eyebrow">{benefitTitle}</div>
             <div className="mt-5 grid gap-3">
-              {benefitPoints.map((item) => (
-                <div
-                  key={item}
-                  className="rounded-[1rem] border border-white/8 bg-white/[0.035] px-4 py-3 text-sm leading-7 text-white/66"
-                >
-                  {item}
-                </div>
+              {benefitPoints.slice(0, 4).map((item) => (
+                <div key={item} className="rounded-[1rem] border border-white/8 bg-white/[0.035] px-4 py-3 text-sm leading-7 text-white/66">{item}</div>
               ))}
             </div>
           </div>
-
           <div className="panel p-5 sm:p-7">
             <div className="eyebrow">{processTitle}</div>
             <div className="mt-5 grid gap-3">
-              {processPoints.map((item) => (
-                <div
-                  key={item}
-                  className="rounded-[1rem] border border-white/8 bg-black/20 px-4 py-3 text-sm leading-7 text-white/66"
-                >
-                  {item}
-                </div>
+              {processPoints.slice(0, 4).map((item) => (
+                <div key={item} className="rounded-[1rem] border border-white/8 bg-black/20 px-4 py-3 text-sm leading-7 text-white/66">{item}</div>
               ))}
             </div>
           </div>
         </section>
 
         <section className="space-y-6">
-          <SectionHeader
-            eyebrow="commercial fit"
-            title={fitTitle}
-            text="Search traffic matters only when the page also pre-qualifies the right counterparties. These cards explain who should move forward now."
-          />
-
+          <SectionHeader eyebrow="commercial fit" title={fitTitle} text="These cards explain who should move from reading into a direct access request." />
           <div className="grid gap-4 md:grid-cols-3">
             {fitCards.map((item) => (
               <article key={item.title} className="panel p-5 sm:p-6">
@@ -171,47 +143,30 @@ export default function SeoLandingPage({
             <div className="eyebrow">faq</div>
             <div className="mt-5 grid gap-4">
               {faqItems.map((item, index) => (
-                <article
-                  key={item.q}
-                  className="rounded-[1.25rem] border border-white/8 bg-white/[0.035] p-4 sm:p-5"
-                >
-                  <div className="text-[10px] uppercase tracking-[0.16em] text-white/38">
-                    Question {String(index + 1).padStart(2, "0")}
-                  </div>
+                <article key={item.q} className="rounded-[1.25rem] border border-white/8 bg-white/[0.035] p-4 sm:p-5">
+                  <div className="text-[10px] uppercase tracking-[0.16em] text-white/38">Question {String(index + 1).padStart(2, "0")}</div>
                   <h2 className="mt-2 text-lg font-medium text-white">{item.q}</h2>
                   <p className="mt-3 text-sm leading-7 text-white/64">{item.a}</p>
                 </article>
               ))}
             </div>
           </div>
-
           <div className="panel p-5 sm:p-7">
             <div className="eyebrow">related pages</div>
             <div className="mt-5 grid gap-3">
               {relatedLinks.map((item) => (
-                <Link
-                  key={item.href}
-                  href={item.href}
-                  className="rounded-[1rem] border border-white/8 bg-white/[0.035] px-4 py-3 text-sm text-white/72 transition hover:border-white/16 hover:text-white"
-                >
+                <Link key={item.href} href={item.href} className="rounded-[1rem] border border-white/8 bg-white/[0.035] px-4 py-3 text-sm text-white/72 transition hover:border-white/16 hover:text-white">
                   {item.label}
                 </Link>
               ))}
             </div>
-
             <div className="mt-6 rounded-[1.3rem] border border-[rgba(222,18,2,0.18)] bg-[rgba(222,18,2,0.08)] p-4 sm:p-5">
-              <div className="text-[10px] uppercase tracking-[0.16em] text-white/42 sm:text-[11px] sm:tracking-[0.24em]">
-                Join VlaDDoS PAN
-              </div>
+              <div className="text-[10px] uppercase tracking-[0.16em] text-white/42">Private network access</div>
               <h2 className="mt-2 text-xl font-semibold text-white sm:text-2xl">{ctaTitle}</h2>
               <p className="mt-3 text-sm leading-7 text-white/68">{ctaText}</p>
               <div className="mt-5 flex flex-col gap-3">
-                <Link href="/join" className="button-primary">
-                  Apply for Access
-                </Link>
-                <Link href="/contact" className="button-secondary">
-                  Contact VlaDDoS PAN
-                </Link>
+                <Link href="/join" className="button-primary">Request Access</Link>
+                <Link href="/contact" className="button-secondary">Contact</Link>
               </div>
             </div>
           </div>

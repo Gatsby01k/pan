@@ -1,85 +1,70 @@
-"use client";
-
+import Image from "next/image";
 import Link from "next/link";
-import { motion } from "framer-motion";
 import { heroStats, siteConfig } from "@/data/site";
 
 export default function HeroScene() {
   return (
-    <section className="relative isolate overflow-hidden">
-      <div className="pointer-events-none absolute inset-x-0 top-[-10rem] h-[26rem] bg-[radial-gradient(circle_at_top,rgba(222,18,2,0.18),transparent_62%)]" />
-      <div className="pointer-events-none absolute left-[-10%] top-[20%] h-52 w-52 rounded-full bg-[radial-gradient(circle_at_center,rgba(222,18,2,0.14),transparent_70%)] blur-3xl" />
+    <section className="grid gap-6 lg:grid-cols-[1.08fr_.92fr] lg:items-stretch">
+      <div className="glass-hero relative overflow-hidden rounded-[2rem] p-6 sm:p-8 lg:p-10">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_18%_18%,rgba(222,18,2,0.14),transparent_30%),radial-gradient(circle_at_82%_16%,rgba(255,255,255,0.06),transparent_18%)]" />
+        <div className="relative z-10">
+          <div className="eyebrow">private affiliate network</div>
+          <h1 className="mt-4 max-w-4xl text-[2rem] font-semibold leading-[0.98] text-white sm:text-5xl lg:text-[4.3rem]">
+            Selective partnerships for iGaming, crypto, and performance traffic.
+          </h1>
+          <p className="mt-5 max-w-2xl text-sm leading-7 text-white/68 sm:text-base">
+            VlaDDoS connects experienced affiliates, advertisers, and operators through direct deal flow,
+            private qualification, and Telegram-first communication.
+          </p>
 
-      <motion.div
-        initial={{ opacity: 0, y: 22 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.7 }}
-        className="relative z-[2] max-w-5xl"
-      >
-        <div className="text-[10px] uppercase tracking-[0.24em] text-white/44 sm:text-[11px] sm:tracking-[0.34em]">
-          {siteConfig.tagline}
-        </div>
-
-        <h1 className="mt-5 max-w-5xl text-[2.6rem] font-semibold leading-[0.92] text-white sm:text-5xl lg:text-7xl xl:text-[5.4rem]">
-          Direct affiliate access
-          <br />
-          for serious iGaming
-          <br />
-          and crypto deals.
-        </h1>
-
-        <p className="mt-6 max-w-2xl text-sm leading-7 text-white/66 sm:text-base">
-          Private-entry network for affiliates, advertisers, and managers who
-          want faster qualification, cleaner conversations, and direct Telegram
-          routing without marketplace noise.
-        </p>
-
-        <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-          <a
-            href={`https://t.me/${siteConfig.telegramAccount.replace("@", "")}`}
-            target="_blank"
-            rel="noreferrer"
-            className="button-primary w-full sm:w-auto"
-          >
-            Open {siteConfig.telegramAccount}
-          </a>
-
-          <Link href="/access" className="button-secondary w-full sm:w-auto">
-            View Access Desk
-          </Link>
-        </div>
-
-        <div className="mt-6 flex flex-wrap gap-2 text-[10px] uppercase tracking-[0.14em] text-white/48 sm:text-[11px] sm:tracking-[0.22em]">
-          <span className="rounded-full border border-white/10 bg-white/[0.04] px-3 py-2">
-            Direct routing
-          </span>
-          <span className="rounded-full border border-white/10 bg-white/[0.04] px-3 py-2">
-            Selective entry
-          </span>
-          <span className="rounded-full border border-white/10 bg-white/[0.04] px-3 py-2">
-            Owner escalation
-          </span>
-        </div>
-
-        <div className="mt-8 grid grid-cols-2 gap-3 xl:grid-cols-4">
-          {heroStats.map((item, index) => (
-            <motion.div
-              key={item.label}
-              className="panel p-4"
-              initial={{ opacity: 0, y: 18 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.45, delay: 0.18 + index * 0.06 }}
+          <div className="mt-7 flex flex-col gap-3 sm:flex-row">
+            <Link href="/join" className="button-primary w-full sm:w-auto">
+              Request Access
+            </Link>
+            <a
+              href={`https://t.me/${siteConfig.telegramAccount.replace("@", "")}`}
+              target="_blank"
+              rel="noreferrer"
+              className="button-secondary w-full sm:w-auto"
             >
-              <div className="text-lg font-semibold text-white sm:text-2xl">
-                {item.value}
+              Open Telegram
+            </a>
+          </div>
+
+          <div className="mt-8 grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
+            {heroStats.map((item) => (
+              <div key={item.label} className="rounded-[1.2rem] border border-white/8 bg-white/[0.035] p-4">
+                <div className="text-lg font-medium text-white">{item.value}</div>
+                <div className="mt-1 text-[10px] uppercase tracking-[0.18em] text-white/42">{item.label}</div>
               </div>
-              <div className="mt-1 text-[10px] uppercase tracking-[0.14em] text-white/46 sm:text-[11px] sm:tracking-[0.22em]">
-                {item.label}
-              </div>
-            </motion.div>
-          ))}
+            ))}
+          </div>
         </div>
-      </motion.div>
+      </div>
+
+      <div className="glass-hero relative overflow-hidden rounded-[2rem] p-4 sm:p-5 lg:p-6">
+        <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(255,255,255,0.04),rgba(255,255,255,0.02))]" />
+        <div className="relative h-full min-h-[360px] overflow-hidden rounded-[1.5rem] border border-white/8 bg-black/20 sm:min-h-[420px]">
+          <Image
+            src="/bg.png"
+            alt="VlaDDoS background"
+            fill
+            sizes="(max-width: 1024px) 100vw, 42vw"
+            className="object-cover object-center"
+            priority
+          />
+          <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(4,4,4,0.12),rgba(4,4,4,0.62))]" />
+          <div className="absolute inset-x-0 bottom-0 p-5 sm:p-6">
+            <div className="rounded-[1.3rem] border border-white/10 bg-[rgba(7,7,10,0.58)] p-4 backdrop-blur-xl sm:p-5">
+              <div className="text-[10px] uppercase tracking-[0.18em] text-white/42">Who this is for</div>
+              <div className="mt-3 grid gap-3 text-sm text-white/74 sm:grid-cols-2">
+                <div className="rounded-[1rem] border border-white/8 bg-white/[0.035] px-4 py-3">Affiliates with paid traffic, SEO, or media buying.</div>
+                <div className="rounded-[1rem] border border-white/8 bg-white/[0.035] px-4 py-3">Advertisers looking for performance partners and direct supply.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
   );
 }
